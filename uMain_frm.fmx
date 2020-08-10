@@ -640,13 +640,13 @@ object frm_Main: Tfrm_Main
     end
     object Label14: TLabel
       Position.X = 120.000000000000000000
-      Position.Y = 64.000000000000000000
+      Position.Y = 67.000000000000000000
       Size.Width = 649.000000000000000000
       Size.Height = 17.000000000000000000
       Size.PlatformDefault = False
       Text = 
-        'MODIFY BY: MESA, DATE: 10/08/2020, PURPOSE: ADD ContenType of Pa' +
-        'rameters'
+        'Modify By: MESA, Date: 10/08/2020, Purpose: Add Content Type Par' +
+        'ameter'
       TabOrder = 0
     end
   end
