@@ -540,7 +540,7 @@ var
   LParameter: TRESTRequestParameter;
   LDialog: Tfrm_CustomHeaderDlg;
 begin
-  if (lb_CustomParameters.ItemIndex < 0) then
+   if (lb_CustomParameters.ItemIndex < 0) then
   begin
     MessageDlg(RSNoCustomParameterSelected, TMsgDlgType.mtError, [TMsgDlgBtn.mbOK], 0);
     EXIT;
@@ -558,7 +558,10 @@ begin
       LParameter.Value := LDialog.edt_ParameterValue.Text;
       //Mesa 10/08/2020
        if LDialog.cmb_ContentType.ItemIndex > -1 then
-          LParameter.ContentType := ContentTypeFromString(LDialog.cmb_ContentType.Items[LDialog.cmb_ContentType.ItemIndex])
+          if LDialog.cmb_ContentType.ItemIndex=0  then
+              LParameter.ContentType := ctNone
+          else
+              LParameter.ContentType := ContentTypeFromString(LDialog.cmb_ContentType.Items[LDialog.cmb_ContentType.ItemIndex])
       else
          LParameter.ContentType := DefaultRESTContentType;
       //Mesa
