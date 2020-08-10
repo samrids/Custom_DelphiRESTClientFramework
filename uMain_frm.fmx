@@ -647,17 +647,6 @@ object frm_Main: Tfrm_Main
       Text = 
         'MODIFY BY: MESA, DATE: 10/08/2020, PURPOSE: ADD ContenType of Pa' +
         'rameters'
-      TabOrder = 1
-    end
-    object Label18: TLabel
-      Position.X = 120.000000000000000000
-      Position.Y = 80.000000000000000000
-      Size.Width = 649.000000000000000000
-      Size.Height = 17.000000000000000000
-      Size.PlatformDefault = False
-      Text = 
-        'MODIFY BY: MESA, DATE: 10/08/2020, PURPOSE: ADD ContenType of Pa' +
-        'rameters'
       TabOrder = 0
     end
   end

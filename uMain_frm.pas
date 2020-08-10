@@ -146,7 +146,6 @@ type
     edt_Timeout: TNumberBox;
     Label17: TLabel;
     Label14: TLabel;
-    Label18: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure btn_ExecuteRequestClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
