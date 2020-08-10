@@ -31,6 +31,8 @@ type
     Label2: TLabel;
     Label1: TLabel;
     cbx_DoNotEncode: TCheckBox;
+    cmb_ContentType: TComboEdit;
+    Label4: TLabel;
     procedure btn_CancelClick(Sender: TObject);
     procedure btn_ApplyClick(Sender: TObject);
     procedure cmb_ParameterKindChange(Sender: TObject);
@@ -96,6 +98,9 @@ begin
         (RESTRequestParameterKindToString(DefaultRESTRequestParameterKind));
 
     cbx_DoNotEncode.IsChecked := poDoNotEncode in AParameter.Options;
+    //MESA
+    cmb_ContentType.ItemIndex := cmb_ContentType.Items.IndexOf(ContentTypeToString(AParameter.ContentType));
+
   end
   else
   begin

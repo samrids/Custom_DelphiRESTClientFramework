@@ -12,6 +12,7 @@ interface
 
 uses
   System.Classes, System.Generics.Collections, System.JSON,
+  //FMX.Dialogs,
   REST.Types, REST.Client;
 
 const
@@ -396,6 +397,9 @@ begin
     LObject.AddPair(TJSONPair.Create('value', LParameter.Value));
     LObject.AddPair(TJSONPair.Create('kind', RESTRequestParameterKindToString(LParameter.Kind)));
     LObject.AddPair(TJSONPair.Create('encode', TJSONBool.Create(not (poDoNotEncode in LParameter.Options))));
+    //MESA 10/08/2020
+    LObject.AddPair(TJSONPair.Create('contenttype', ContentTypeToString(LParameter.ContentType)));
+        
     LParams.Add(LObject);
   end;
   LRoot.AddPair(TJSONPair.Create('parameters', LParams));
@@ -560,18 +564,26 @@ begin
         LPair := LObject.Get('name');
         if Assigned(LPair) then
           LParameter.Name := LPair.JsonValue.Value;
+          
         LPair := LObject.Get('value');
         if Assigned(LPair) then
           LParameter.Value := LPair.JsonValue.Value;
+          
         LPair := LObject.Get('kind');
         if Assigned(LPair) then
           LParameter.Kind := RESTRequestParameterKindFromString(LPair.JsonValue.Value);
+          
         LPair := LObject.Get('encode');
         if Assigned(LPair) and LPair.JsonValue.TryGetValue<TJSONBool>(LBool) then
           if LBool.AsBoolean then
             LParameter.Options := LParameter.Options - [poDoNotEncode]
           else
             LParameter.Options := LParameter.Options + [poDoNotEncode];
+            
+        //MESA 10/08/2020
+        LPair := LObject.Get('contenttype');
+        if Assigned(LPair) then
+          LParameter.ContentType := ContentTypeFromString(LPair.JsonValue.Value);              
       end;
     end;
   end;
@@ -585,8 +597,9 @@ procedure TRESTRequestParams.SaveToFile(const AFilename: string);
 var
   LStream: TStringStream;
   LJSONObj: TJSONObject;
+  i: byte;
 begin
-  LJSONObj := AsJSONObject;
+  LJSONObj := AsJSONObject; 
   try
     LStream := TStringStream.Create(LJSONObj.ToString);
     try
@@ -648,3 +661,4 @@ begin
 end;
 
 end.
+

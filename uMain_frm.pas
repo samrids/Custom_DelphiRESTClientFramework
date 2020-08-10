@@ -145,6 +145,8 @@ type
     cbTimeout: TCheckBox;
     edt_Timeout: TNumberBox;
     Label17: TLabel;
+    Label14: TLabel;
+    Label18: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure btn_ExecuteRequestClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -447,6 +449,9 @@ begin
       LParameter.Name := LDialog.cmb_ParameterName.Text;
       LParameter.Value := LDialog.edt_ParameterValue.Text;
       LParameter.Kind := LKind;
+      //Mesa 10/08/2020
+      LParameter.ContentType := TRESTContentType(LDialog.cmb_ContentType.ItemIndex);
+
       if LDialog.cbx_DoNotEncode.IsChecked then
         LParameter.Options := LParameter.Options + [poDoNotEncode]
       else
@@ -552,6 +557,12 @@ begin
     begin
       LParameter.Name := LDialog.cmb_ParameterName.Text;
       LParameter.Value := LDialog.edt_ParameterValue.Text;
+      //Mesa 10/08/2020
+       if LDialog.cmb_ContentType.ItemIndex > -1 then
+          LParameter.ContentType := ContentTypeFromString(LDialog.cmb_ContentType.Items[LDialog.cmb_ContentType.ItemIndex])
+      else
+         LParameter.ContentType := DefaultRESTContentType;
+      //Mesa
       if (LDialog.cmb_ParameterKind.ItemIndex > -1) then
         LParameter.Kind := RESTRequestParameterKindFromString
           (LDialog.cmb_ParameterKind.Items[LDialog.cmb_ParameterKind.ItemIndex])
@@ -754,7 +765,11 @@ begin
 
   /// after fetching the resource, we try to re-create the parameter-list
   //FRESTParams.CustomParams.FromString('', FRESTParams.Resource);
+  //showmessage(ContentTypeToString( FRESTParams.CustomParams.Items[0].ContentType));
+
   FRESTParams.CustomParams.CreateURLSegmentsFromString(FRESTParams.Resource);
+
+  //showmessage(ContentTypeToString( FRESTParams.CustomParams.Items[0].ContentType));
 
   if (cmb_AuthMethod.ItemIndex > -1) then
     FRESTParams.AuthMethod := RESTAuthMethodFromString(cmb_AuthMethod.Items[cmb_AuthMethod.ItemIndex])
@@ -773,6 +788,9 @@ begin
   DoUpdateProxyStateLabel;
 
   FRESTParams.CustomBody.Clear;
+
+
+
   memo_RequestBody.Lines.WriteBOM := False;
   memo_RequestBody.Lines.SaveToStream(FRESTParams.CustomBody, TEncoding.UTF8);
 end;
