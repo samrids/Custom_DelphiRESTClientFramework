@@ -14,7 +14,8 @@ uses
   System.SysUtils, System.Types, System.UITypes, System.Rtti, System.Classes,
   System.Variants, FMX.Types, FMX.Controls, FMX.Forms, FMX.Dialogs,
   FMX.StdCtrls, FMX.Objects, FMX.Edit, FMX.ListBox, FMX.ComboEdit,
-  REST.Client, REST.Consts, REST.Types, FMX.Controls.Presentation;
+  REST.Client, REST.Consts, REST.Types, FMX.Controls.Presentation,
+  FMX.Memo.Types, FMX.ScrollBox, FMX.Memo;
 
 type
   Tfrm_CustomHeaderDlg = class(TForm)
@@ -27,12 +28,11 @@ type
     cmb_ParameterKind: TComboBox;
     Label3: TLabel;
     cmb_ParameterName: TComboEdit;
-    edt_ParameterValue: TEdit;
-    Label2: TLabel;
     Label1: TLabel;
     cbx_DoNotEncode: TCheckBox;
     cmb_ContentType: TComboEdit;
     Label4: TLabel;
+    edt_ParameterValue: TMemo;
     procedure btn_CancelClick(Sender: TObject);
     procedure btn_ApplyClick(Sender: TObject);
     procedure cmb_ParameterKindChange(Sender: TObject);

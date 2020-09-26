@@ -35,7 +35,8 @@ uses
   FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
   FireDAC.DApt.Intf, FireDAC.Comp.DataSet, FireDAC.Comp.Client, FMX.EditBox,
-  FMX.Controls.Presentation, System.Net.URLClient, FMX.ScrollBox, FMX.Grid.Style;
+  FMX.Controls.Presentation, System.Net.URLClient, FMX.ScrollBox, FMX.Grid.Style,
+  FMX.Memo.Types;
 
 type
   Tfrm_Main = class(TForm)

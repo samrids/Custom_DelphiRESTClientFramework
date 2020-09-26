@@ -5,7 +5,7 @@ object frm_CustomHeaderDlg: Tfrm_CustomHeaderDlg
   BorderIcons = [biSystemMenu]
   BorderStyle = Single
   Caption = '{CAPTION}'
-  ClientHeight = 326
+  ClientHeight = 405
   ClientWidth = 487
   Position = MainFormCenter
   FormFactor.Width = 320
@@ -18,11 +18,11 @@ object frm_CustomHeaderDlg: Tfrm_CustomHeaderDlg
     Anchors = [akRight, akBottom]
     Cancel = True
     Position.X = 399.000000000000000000
-    Position.Y = 294.000000000000000000
+    Position.Y = 373.000000000000000000
     Size.Width = 80.000000000000000000
     Size.Height = 22.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 5
+    TabOrder = 4
     Text = '&Cancel'
     OnClick = btn_CancelClick
   end
@@ -30,11 +30,11 @@ object frm_CustomHeaderDlg: Tfrm_CustomHeaderDlg
     Anchors = [akRight, akBottom]
     Default = True
     Position.X = 311.000000000000000000
-    Position.Y = 294.000000000000000000
+    Position.Y = 373.000000000000000000
     Size.Width = 80.000000000000000000
     Size.Height = 22.000000000000000000
     Size.PlatformDefault = False
-    TabOrder = 4
+    TabOrder = 3
     Text = '&Apply'
     OnClick = btn_ApplyClick
   end
@@ -50,7 +50,7 @@ object frm_CustomHeaderDlg: Tfrm_CustomHeaderDlg
     Anchors = [akLeft, akRight, akBottom]
     LineType = Diagonal
     Position.X = 8.000000000000000000
-    Position.Y = 280.000000000000000000
+    Position.Y = 359.000000000000000000
     Size.Width = 471.000000000000000000
     Size.Height = 1.000000000000000000
     Size.PlatformDefault = False
@@ -158,31 +158,15 @@ object frm_CustomHeaderDlg: Tfrm_CustomHeaderDlg
       Text = 'Name:'
     end
   end
-  object edt_ParameterValue: TEdit
-    Touch.InteractiveGestures = [LongTap, DoubleTap]
-    TabOrder = 2
-    Position.X = 64.000000000000000000
-    Position.Y = 208.000000000000000000
-    Size.Width = 353.000000000000000000
-    Size.Height = 22.000000000000000000
-    Size.PlatformDefault = False
-    object Label2: TLabel
-      Position.Y = -16.000000000000000000
-      Size.Width = 120.000000000000000000
-      Size.Height = 17.000000000000000000
-      Size.PlatformDefault = False
-      Text = 'Value:'
-    end
-  end
   object cbx_DoNotEncode: TCheckBox
     Position.X = 64.000000000000000000
-    Position.Y = 232.000000000000000000
-    TabOrder = 3
+    Position.Y = 336.000000000000000000
+    TabOrder = 2
     Text = 'Do not encode'
   end
   object cmb_ContentType: TComboEdit
     Touch.InteractiveGestures = [LongTap, DoubleTap]
-    TabOrder = 7
+    TabOrder = 6
     ItemHeight = 19.000000000000000000
     Items.Strings = (
       ''
@@ -311,6 +295,17 @@ object frm_CustomHeaderDlg: Tfrm_CustomHeaderDlg
     Size.Height = 17.000000000000000000
     Size.PlatformDefault = False
     Text = 'Content type:'
-    TabOrder = 8
+    TabOrder = 7
+  end
+  object edt_ParameterValue: TMemo
+    Touch.InteractiveGestures = [Pan, LongTap, DoubleTap]
+    DataDetectorTypes = []
+    Position.X = 64.000000000000000000
+    Position.Y = 192.000000000000000000
+    Size.Width = 353.000000000000000000
+    Size.Height = 137.000000000000000000
+    Size.PlatformDefault = False
+    Viewport.Width = 349.000000000000000000
+    Viewport.Height = 133.000000000000000000
   end
 end
