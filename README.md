@@ -1,5 +1,5 @@
 #Custom Delphi REST Client Framework
 
-* Origianal source from Embarcadero
+* Original source from Embarcadero
 
 - Add Content Type Parameter
