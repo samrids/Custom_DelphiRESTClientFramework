@@ -687,6 +687,10 @@ begin
   ConfigureHTTPConnection;
 
   RESTClient.BaseURL := cmb_RequestURL.Text;
+  if cmb_RequestURL.Text[Length(cmb_RequestURL.Text)] = '/' then
+    if RESTClient.BaseURL[Length(RESTClient.BaseURL)] <> '/' then
+       RESTClient.BaseURL := RESTClient.BaseURL +'//';
+
   RESTRequest.Resource := FRESTParams.Resource;
 
   RESTRequest.Params.Clear;
@@ -761,7 +765,7 @@ begin
     LURL := Trim(LURL.Substring(0, I));
 
 
-  cmb_RequestURL.Text := TURI.FixupForREST(LURL);
+  cmb_RequestURL.Text := LURL;// TURI.FixupForREST(LURL);
   FRESTParams.URL := cmb_RequestURL.Text;
   FRESTParams.Resource := edt_Resource.Text;
   FRESTParams.ContentType := edt_ContentType.Text;
@@ -1124,7 +1128,11 @@ begin
   dlg_SaveRequestSettings.InitialDir := DefaultStorageFolder;
 
   FRESTParams := TRESTRequestParams.Create;
-  FMRUList := TMRUList.Create(DefaultStorageFolder + MRUDBFILE);
+  try
+     FMRUList := TMRUList.Create(DefaultStorageFolder + MRUDBFILE);
+  except
+     raise;
+  end;
   FSettingsList := TSettingsList.Create(DefaultStorageFolder + SETTINGSDBFILE);
   FSettingsList.LoadFromFile;
 
